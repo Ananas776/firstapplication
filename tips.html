@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- the Bootstrap framework is included via a link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>Tips Calculator</title>
+  </head>
+  <body style="font-family: 'Ubuntu', sans-serif">
+    <!-- creating a wrapper div with the class container-sm is used to create a container with a fixed width for the page content -->
+    <div class="container-sm">
+      <div class="row">
+        <div class="col">
+          <!-- the main content of the calculator is contained in this div, which adds padding and background color to the content -->
+          <div class="p-1 bg-body-tertiary text-dark">
+            <!-- a heading h1 with the text "Tips Calculator", centered using Bootstrap classes -->
+            <h1 class="text-center">Tips Calculator</h1>
+
+            <div class="d-flex flex-column align-items-center align-self-center">
+              <!-- a label and an input field for entering the bill amount -->
+              <label for="billAmount">Bill Amount:</label>
+              <input type="number" id="billAmount" />
+            </div>
+
+            <div
+              class="d-flex justify-content-center align-items-center align-self-center pt-3 gap-3"
+            >
+              <!-- a label and a dropdown select for selecting the tip percentage. Options range from 5% to 50%. -->
+              <label for="tipPercentage">Tip Percentage:</label>
+              <select id="tipPercentage">
+                <option value="0.05">5%</option>
+                <option value="0.10">10%</option>
+                <option value="0.15">15%</option>
+                <option value="0.20">20%</option>
+                <option value="0.25">25%</option>
+                <option value="0.30">30%</option>
+                <option value="0.35">35%</option>
+                <option value="0.40">40%</option>
+                <option value="0.45">45%</option>
+                <option value="0.50">50%</option>
+              </select>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center align-self-center pt-3">
+              <!-- a button labeled "Calculate Tip", which triggers the calculateTip() JavaScript function when clicked -->
+              <button class="btn mb-3 mr-3 btn-outline-success" onclick="calculateTip()">
+                Calculate Tip
+              </button>
+            </div>
+
+            <!-- display areas for the tip amount and the total bill amount, both disabled input fields -->
+            <div
+              class="d-flex flex-column justify-content-center align-items-center align-self-center pt-5"
+            >
+              <h3>Tip Amount:</h3>
+              <input type="text" id="tipAmount" disabled />
+              <h3>Total:</h3>
+              <input type="text" id="fullAmount" disabled />
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center align-self-center pt-3">
+              <!-- a button labeled "Reset", which triggers the clear1() JavaScript function when clicked -->
+              <button class="btn mb-3 mr-3 btn-outline-secondary" onclick="clear1()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fixed navigation bar nav is included with links to different pages of the web application -->
+      <nav class="navbar fixed-bottom navbar-light bg-dark-subtle">
+        <!-- link is represented by an a element with a corresponding icon, providing navigation to Home Page -->
+        <a class="nav-link active" href="index.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="currentColor"
+            class="bi bi-house"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"
+            />
+          </svg>
+        </a>
+        <!-- link is represented by an a element with a corresponding icon, providing navigation to Tips Calculator Page -->
+        <a class="nav-link" href="tips.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="currentColor"
+            class="bi bi-cash"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+            <path
+              d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"
+            />
+          </svg>
+        </a>
+        <!-- link is represented by an a element with a corresponding icon, providing navigation to Roll The Dice Page -->
+        <a class="nav-link" href="dice.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="currentColor"
+            class="bi bi-dice-5"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h10zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3z"
+            />
+            <path
+              d="M5.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm4-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+            />
+          </svg>
+        </a>
+        <!-- link is represented by an a element with a corresponding icon, providing navigation to Full Calculator Page -->
+        <a class="nav-link" href="calculator.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="currentColor"
+            class="bi bi-calculator"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"
+            />
+            <path
+              d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"
+            />
+          </svg>
+        </a>
+      </nav>
+    </div>
+
+    <script>
+      // function for calculating tip
+      function calculateTip() {
+        // Get the bill amount and tip percentage
+        var billAmount = parseFloat(document.getElementById("billAmount").value);
+        var tipPercentage = parseFloat(document.getElementById("tipPercentage").value);
+
+        // Calculate the tip
+        var tipAmount = billAmount * tipPercentage;
+        var fullAmount = tipAmount + billAmount;
+
+        // Display the tip amount
+        document.getElementById("tipAmount").value = tipAmount.toFixed(2);
+        document.getElementById("fullAmount").value = fullAmount.toFixed(2);
+      }
+      // function for clear all inputs
+      function clear1() {
+        document.getElementById("tipAmount").value = "";
+        document.getElementById("fullAmount").value = "";
+        document.getElementById("billAmount").value = "";
+        document.getElementById("tipPercentage").value = "0.05";
+      }
+    </script>
+  </body>
+</html>
